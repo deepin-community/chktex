@@ -1,0 +1,8 @@
+manpage.patch
+#make.patch
+#strcpy-bug.patch
+latex2html-date.patch
+spelling.patch
+tex-inputenc.patch
+warning-handling-1.patch
+warning-handling-2.patch

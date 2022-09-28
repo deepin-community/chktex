@@ -1,0 +1,40 @@
+--- chktex-1.6.4/FindErrs.c	2011-09-17 22:29:30.000000000 +0200
++++ chktex-1.6.4-work/FindErrs.c	2011-09-17 22:31:14.000000000 +0200
+@@ -184,6 +184,18 @@ static char *GetLTXToken(char *Src, char
+ #define GET_TOKEN       256
+ #define GET_STRIP_TOKEN 257
+ 
++static void ShiftLeftOne(char *Buf)
++{
++    char *P;
++
++    if (*Buf)
++    {
++        for (P = Buf + 1; *P; ++P)
++            *(P - 1) = *P;
++        *(P - 1) = '\0';
++    }
++}
++
+ static char *GetLTXArg(char *SrcBuf, char *OrigDest, const int Until,
+ 	struct WordList *wl)
+ {
+@@ -218,7 +230,16 @@ static char *GetLTXArg(char *SrcBuf, cha
+ 
+         if (Retval && (*OrigDest == '{') && (Until == GET_STRIP_TOKEN))
+         {
+-            strcpy(OrigDest, OrigDest + 1);
++	    /* According to strcpy(3): The strings may not overlap
++	       So the following call:
++
++	          strcpy(OrigDest, OrigDest + 1);
++
++	       is undefined, and it DOES produce errors in new versions
++	       of glibc (checked on glibc-2.12.2).
++
++	       Call safe version. */
++   	    ShiftLeftOne(OrigDest);
+             OrigDest[strlen(OrigDest) - 1] = 0;
+         }
+         break;
+

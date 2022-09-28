@@ -1,0 +1,15 @@
+Author: Thorsten Alteholz <debian@alteholz.de>
+Description: fix spelling error
+Index: chktex/ChkTeX.h
+===================================================================
+--- chktex.orig/ChkTeX.h	2016-10-11 12:33:56.000000000 +0200
++++ chktex/ChkTeX.h	2016-10-11 13:34:19.000000000 +0200
+@@ -160,7 +160,7 @@
+ static char _ ## name [len  + (WALLBYTES<<1)] = {0};  \
+ char *name = &_ ## name[WALLBYTES]
+ 
+-#define INTFAULTMSG "INTERNAL FAULT OCCURED! PLEASE SUBMIT A BUG REPORT!\n"
++#define INTFAULTMSG "INTERNAL FAULT OCCURRED! PLEASE SUBMIT A BUG REPORT!\n"
+ 
+ #define INTERNFAULT   INTFAULTMSG
+ 

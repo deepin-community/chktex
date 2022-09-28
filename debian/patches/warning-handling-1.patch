@@ -1,0 +1,37 @@
+From 127e9ea31f80e6738d137e8a5022cbb2ab601f4c Mon Sep 17 00:00:00 2001
+From: gvol <darthandrus@gmail.com>
+Date: Wed, 28 Sep 2016 03:52:31 +0000
+Subject: Only return exit failure on an error/warning
+
+git-svn-id: svn://svn.savannah.nongnu.org/chktex/trunk@314 29f9d7e1-bebc-0310-b7c6-d7abf8ca9c08
+---
+ chktex/FindErrs.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/FindErrs.c b/FindErrs.c
+index f1a470b..d5494dd 100644
+--- a/FindErrs.c
++++ b/FindErrs.c
+@@ -1872,7 +1872,6 @@ PrintError(const char *File, const char *String,
+             }
+             else
+             {
+-                FoundErr = EXIT_FAILURE;
+                 Context = LaTeXMsgs[Error].Context;
+ 
+                 if (!HeadErrOut)
+@@ -1889,9 +1888,11 @@ PrintError(const char *File, const char *String,
+                 {
+                 case etWarn:
+                     WarnPrint++;
++                    FoundErr = EXIT_FAILURE;
+                     break;
+                 case etErr:
+                     ErrPrint++;
++                    FoundErr = EXIT_FAILURE;
+                     break;
+                 case etMsg:
+                     break;
+-- 
+cgit v1.0-41-gc330
+

@@ -1,0 +1,32 @@
+Source: chktex
+Section: tex
+Priority: optional
+Maintainer: Thorsten Alteholz <debian@alteholz.de>
+Build-Depends: debhelper-compat (= 12),
+ libncurses-dev,
+ texlive,
+ texlive-latex-extra,
+ latex2html,
+ autoconf,
+ libpcre3-dev
+Standards-Version: 4.5.1
+Homepage: https://www.nongnu.org/chktex/
+Vcs-Browser: https://salsa.debian.org/alteholz/chktex
+Vcs-Git: https://salsa.debian.org/alteholz/chktex.git
+
+Package: chktex
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Finds typographic errors in LaTeX
+ ChkTeX finds typographic errors in LaTeX documents:
+  * Supports over 40 warnings.
+  * Supports ``\input'' command; both TeX and LaTeX version. Actually
+    includes the files. ``TEXINPUTS''-equivalent search path.
+  * Intelligent warning/error handling. The user may promote/mute
+    warnings to suit his preferences. You may also mute warnings in
+    the header of a file; thus killing much unwanted garbage.
+  * Supports both LaTeX 2.09 and LaTeX2e.
+  * Flexible output handling. Has some predefined formats and lets the
+    user specify his own format. Uses a ``printf()'' similar syntax.
+    ``lacheck'' compatible mode included for interfacing with the
+    AUC-TeX Emacs mode.

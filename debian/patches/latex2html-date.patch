@@ -1,0 +1,23 @@
+Author:  Sascha Steinbiss <satta@debian.org>
+Description: make build of chktex reproducible
+Index: chktex/Makefile.in
+===================================================================
+--- chktex.orig/Makefile.in	2016-10-11 12:33:56.000000000 +0200
++++ chktex/Makefile.in	2016-10-11 12:50:37.000000000 +0200
+@@ -212,14 +212,14 @@
+ 	-rm -r HTML
+ 	$(MKDIR_P) HTML
+ 	$(PERL5) $(srcdir)/MakeHTML.pl ChkTeX.tex > HTML/ChkTeX.tex
+-	cd HTML; $(LATEX2HTML) ChkTeX.tex
++	cd HTML; $(LATEX2HTML) -address '' -info '' ChkTeX.tex
+ 	$(PERL5) -i -pe 's%</code> %</code>%gi;s%\s+([.,?!])%$$1%g;' HTML/ChkTeX/*.html
+ 
+ README: ChkTeX.tex rmeheader MakeHTML.pl
+ 	rm -rf rme
+ 	$(MKDIR_P) rme
+ 	$(PERL5) $(srcdir)/MakeHTML.pl ChkTeX.tex > rme/ChkTeX.tex
+-	cd rme; $(LATEX2HTML) -split 0 ChkTeX.tex
++	cd rme; $(LATEX2HTML) -address '' -info '' -split 0 ChkTeX.tex
+ 	$(PERL5) -i -pe 's%L<SUP><SMALL>A</SMALL></SUP>%La%g;s%T<SMALL>E</SMALL>X%TeX%g;s%<SUB>(.*)</SUB>%$$1%g' rme/ChkTeX/*.html
+ 	$(PERL5) -i -pe 's%</code> %</code>%gi;s%\s+([.,?!])%$$1%g;' rme/ChkTeX/*.html
+ 	$(LYNX) -dump rme/ChkTeX/ChkTeX.html > rme/ChkTeX.rme

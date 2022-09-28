@@ -1,0 +1,308 @@
+chktex (1.7.6-4) unstable; urgency=medium
+
+  * debian/control: new homepage (Closes: #975461)
+                    thanks to Davide Prina for the hint
+  * debian/control: bump standard to 4.5.1 (no changes)
+  * debian/control: use dh12
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Sun, 06 Dec 2020 08:40:03 +0100
+
+chktex (1.7.6-3) unstable; urgency=medium
+
+  * debian/control: bump standard to 4.3.0 (no changes)
+  * debian/rules: avoid FTBFS on gcc9 (Closes: #925652)
+  * add patches for error handling (Closes: #851276)
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Mon, 19 Aug 2019 18:40:03 +0200
+
+chktex (1.7.6-2) unstable; urgency=medium
+
+  * debian/control: add salsa URLs
+  * debian/control: use dh11
+  * debian/control: bump standard to 4.1.4 (no changes)
+  * add patch to fix FTBFS with TeX Live 2018 (Closes: #896178)
+    (thanks to Adrian Bunk for the patch)
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Sun, 22 Apr 2018 18:40:03 +0200
+
+chktex (1.7.6-1) unstable; urgency=medium
+
+  * new upstream version (Closes: #782342, #782343)
+  * apply latex2html-date.patch (Closes: #819885)
+    Thanks a lot to Sascha Steinbiss for the patch
+  * debian/control: standard set to 3.9.8 (no changes)
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Mon, 10 Oct 2016 19:40:03 +0200
+
+chktex (1.7.4-1) unstable; urgency=medium
+
+  * new upstream version
+  * debian/control: standard set to 3.9.6 (no changes)
+  * debian/rules: do not build with --enable-emacs-hack any longer
+                  this seems to just create an empty directory
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Sun, 05 Jul 2015 09:40:03 +0200
+
+chktex (1.7.2-1) unstable; urgency=low
+
+  * new upstream version
+  * upload to unstable again
+  * debian/control: DM-Upload-Allowed: removed
+  * debian/control: standard set to 3.9.4 (no changes)
+  * debian/control: add dependency libpcre3-dev
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Mon, 03 Jun 2013 18:00:03 +0200
+
+chktex (1.7.1-1) experimental; urgency=low
+
+  * new upstream version for experimental
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Tue, 11 Sep 2012 18:00:03 +0200
+
+chktex (1.6.6-1) unstable; urgency=low
+
+  * new upstream version (Closes: #687155)
+  * debian/rules: moved to debhelper 9
+  * debian/compat: moved to debhelper 9
+  * debian/patches/: only use manpage.patch, the rest has been fixed upstream
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Mon, 10 Sep 2012 18:00:03 +0200
+
+chktex (1.6.4-4) unstable; urgency=low
+
+  * debian/rules: build-arch and build-indep according to lintian
+                  recommendation added (Closes:  #653383)
+  * debian/rules: moved to debhelpe 8.0.0
+  * debian/rules: remove dh_quilt_* calls
+  * debian/control: dependency on quilt removed
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Fri, 06 Jan 2012 18:09:03 +0100
+
+chktex (1.6.4-3) unstable; urgency=low
+
+  * debian/control: add autoconf to dependencies
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Wed, 21 Sep 2011 22:08:17 +0200
+
+chktex (1.6.4-2) unstable; urgency=low
+
+  * add strcpy-bug.patch from Edgar Gonzalez (Closes: #626945)
+  * add make.patch for obsolte ac_prog_cc_strict_prototypes and new autotools
+  * debian/control: version changed to 3.9.2, no changes
+  * debian/rules: add targets build-arch and build-indep
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Wed, 21 Sep 2011 18:00:00 +0200
+
+chktex (1.6.4-1) unstable; urgency=low
+
+  * new upstream version 1.6.4 (only minor fixes)
+  * new maintainer,  closes: #568568
+  * debian/control: homepage moved from description to header
+  * debian/control: ${misc:Depends} added to binary package
+  * debian/control: dependency on quilt added
+  * debian/control: debhelper compatibility changed to 7
+  * debian/control: standards version changed to 3.9.1
+  * debian/control: DM-Upload-Allowed added
+  * debian/control: dependency on latex2html added, this is needed
+                    to build the documentation from scratch
+  * debian/compat: compatibility changed to 7
+  * debian/copyright: now refers to versioned license (GPL-2)
+  * debian/rules: install NEWS as upstream changelog
+  * debian/rules: rules doesn't ignore 'make clean'-errors anymore
+  * debian/rules: dh_quilt_patch and dh_quilt_unpatch added
+  * debian/rules: dh_clean -k replaced by dh_prep
+  * debian/rules: create html pages from current source (-> make html)
+  * README.source added
+  * debian/source/format added
+  * change doc-base section from tex to Text
+  * patch for hyphen in man page: - -> \-
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Tue, 27 Jul 2010 21:00:00 +0200
+
+chktex (1.6.3-2.1) unstable; urgency=low
+
+  [Jari Aalto]
+  * Non-maintainer upload.
+  * debian/control
+    - (Build-Depends): remove obsolete tetex-bin and tetex-extra
+      (FTBFS RC bug; Closes: #562319).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Wed, 27 Jan 2010 20:22:10 +0200
+
+chktex (1.6.3-2) unstable; urgency=low
+
+  * Apply patch to escape some \ characters, thanks to Nicolas François.
+    (Closes: #349863)
+  * Update Standards-Version to 3.7.2, no changes needed.
+  * Increase compat to 5 and use debhelper 5.
+  * Added a watch file.
+
+ -- Baruch Even <baruch@debian.org>  Wed,  1 Nov 2006 07:33:26 +0200
+
+chktex (1.6.3-1) unstable; urgency=low
+
+  * New upstream version
+  * Update homepage location
+  * Update license (author approved in private e-mail a while ago)
+    - This only removed the request for donations, the license is GPL v2 or
+      later now.
+  * Use DESTDIR since it was added in this version.
+  * Remove build-dep on hevea, upstream package comes with everything ready.
+
+ -- Baruch Even <baruch@debian.org>  Sat,  1 Jan 2005 20:26:11 +0000
+
+chktex (1.6.2-4) unstable; urgency=low
+
+  [Kaare Hviid]
+  * Add a hack to fix the build problem (Closes: bug#269073)
+
+ -- Baruch Even <baruch@debian.org>  Thu, 23 Sep 2004 11:35:29 +0100
+
+chktex (1.6.2-3) unstable; urgency=low
+
+  * Do not generate files in the clean target, this should make chktex build
+    on mips and mipsel.
+
+ -- Baruch Even <baruch@debian.org>  Tue,  7 Sep 2004 16:10:16 +0100
+
+chktex (1.6.2-2) unstable; urgency=low
+
+  * Remove dependency files on clean. (Closes: bug#269073)
+
+ -- Baruch Even <baruch@debian.org>  Tue, 31 Aug 2004 10:35:38 +0100
+
+chktex (1.6.2-1) unstable; urgency=low
+
+  * New upstream version. (Closes: bug#225199, bug#225213, bug#225223)
+
+ -- Baruch Even <baruch@debian.org>  Fri, 27 Aug 2004 11:47:15 +0100
+
+chktex (1.6.1-3) unstable; urgency=low
+
+  * Fix doc-base location. (Closes: bug#227040)
+  * Add link to homepage in package description.
+  * Add ChkTeX.dvi to the package. (Closes: bug#225218)
+
+ -- Baruch Even <baruch@debian.org>  Sat,  5 Jun 2004 08:45:48 +0300
+
+chktex (1.6.1-2) unstable; urgency=low
+
+  * Replaced latex2html with hevea since latex2html is now in non-free
+    (Closes: bug#221327)
+  * Added support for DEB_BUILD_OPTIONS as per policy, updating standard to
+    3.6.1
+  * Remove \textit from italic correction list, add \itshape
+    (Closes: bug#224935)
+
+ -- Baruch Even <baruch@debian.org>  Thu, 25 Dec 2003 08:41:48 +0200
+
+chktex (1.6.1-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Baruch Even <baruch@debian.org>  Tue,  3 Jun 2003 20:50:48 +0300
+
+chktex (1.6-3) unstable; urgency=low
+
+  * Switch to debhelper from debmake
+  * Also need tetex-extra for a4.sty
+  * Install HTML help files
+
+ -- Baruch Even <baruch@debian.org>  Mon, 23 Sep 2002 10:35:50 +0300
+
+chktex (1.6-2) unstable; urgency=low
+
+  * Add Build-Dep on tetex-bin (Closes: bug#161419)
+
+ -- Baruch Even <baruch@debian.org>  Mon, 23 Sep 2002 07:19:48 +0300
+
+chktex (1.6-1) unstable; urgency=low
+
+  * New upstream version
+    - Fixes memory access bug
+
+ -- Baruch Even <baruch@debian.org>  Mon, 16 Sep 2002 10:59:36 +0300
+
+chktex (1.5-10) unstable; urgency=low
+
+  * Add a README.Debian with a pointer to information on using chktex with
+    AuCTeX
+
+ -- Baruch Even <baruch@debian.org>  Sun,  8 Sep 2002 20:53:47 +0300
+
+chktex (1.5-9) unstable; urgency=low
+
+  * Avoid Lintian warning description-starts-with-leading-spaces by adding
+    a first line description before details, Formerly the long desc depended
+    on the short desc.
+  * Solve a problem running chktex from within Emacs, the TERM variable isn't
+    set and chktex gave out an error, it now continues. We only lose the
+    ReverseOn and ReverseOff markers. (Closes: bug#159007)
+  * Enable Emacs support file, it appears to have some users after all :-)
+
+ -- Baruch Even <baruch@debian.org>  Sat, 31 Aug 2002 21:00:14 +0300
+
+chktex (1.5-8) unstable; urgency=low
+
+  * Fix to handle \verb* as \verb (Thanks to Bernhard R. Link)
+    Closes: bug#140715
+
+ -- Baruch Even <baruch@debian.org>  Fri, 17 May 2002 03:23:33 +0300
+
+chktex (1.5-7) unstable; urgency=high
+
+  * Adopted.  closes: bug#142678
+  * Added a build-dependency on libncurses5-dev, apparently it has some uses.
+  * Changed the description to be less verbose.
+  * Urgency high since there was no real change and I want this in woody.
+
+ -- Baruch Even <baruch@debian.org>  Fri, 19 Apr 2002 14:59:50 +0300
+
+chktex (1.5-6) unstable; urgency=low
+
+  * Orphaned.
+
+ -- Clint Adams <schizo@debian.org>  Sat, 13 Apr 2002 10:37:14 -0400
+
+chktex (1.5-5) unstable; urgency=medium
+
+  * Fix wrapping in extended description.  closes: bug#131574.
+  * Updated to policy 3.5.6.0.
+
+ -- Clint Adams <schizo@debian.org>  Wed, 30 Jan 2002 22:13:35 -0500
+
+chktex (1.5-4) unstable; urgency=medium
+
+  * Remove \emph from ItalCmd in /etc/chktexrc.  closes: bug#92923.
+
+ -- Clint Adams <schizo@debian.org>  Fri,  6 Apr 2001 18:18:41 -0400
+
+chktex (1.5-3) unstable; urgency=medium
+
+  * Updated to policy 3.5.2.0.
+  * Added manpages for chkweb and chktex.  closes: bug#62809.
+
+ -- Clint Adams <schizo@debian.org>  Fri, 30 Mar 2001 14:56:47 -0500
+
+chktex (1.5-2) unstable; urgency=low
+
+  * Updated to policy 3.2.1.0.
+  * Moved from non-free to main.  closes: bug#62801.
+  * Replaced old FSF address from copyright file with
+  a pointer to /usr/share/common-licenses/GPL.
+  * Fix permissions on /usr/share/man/man1/deweb.1.gz
+  * Move chktexrc to /etc, declare as conffile.
+
+ -- Clint Adams <schizo@debian.org>  Sat,  7 Oct 2000 16:26:49 -0400
+
+chktex (1.05-1) non-free; urgency=low
+
+  * Incremented version number to circumvent dinstall fussiness.
+
+ -- Clint Adams <schizo@debian.org>  Tue, 27 May 1997 16:36:07 -0400
+
+chktex (1.05-0) non-free; urgency=low
+
+  * Initial Release.
+
+ -- Clint Adams <schizo@debian.org>  Wed, 23 Apr 1997 00:58:59 -0400

@@ -1,0 +1,53 @@
+Description: corrections mentioned by lintian
+Author: Thorsten Alteholz <debian@alteholz.de>
+Index: chktex/chkweb.1
+===================================================================
+--- chktex.orig/chkweb.1	2013-06-03 16:05:03.000000000 +0200
++++ chktex/chkweb.1	2013-06-03 16:11:19.000000000 +0200
+@@ -50,10 +50,10 @@
+ .TP
+ .B "-V --pipeverb"
+ How errors are displayed when stdout != tty.
+-Defaults to the same as -v.
++Defaults to the same as \-v.
+ .TP
+ .B "-s --splitchar"
+-String used to split fields when doing -v0
++String used to split fields when doing \-v0
+ .TP
+ .B "-o --output"
+ Redirect error report to a file.
+@@ -127,6 +127,6 @@
+ .I <jensthi@ifi.uio.no>
+ .PP
+ This manual page was cobbled together by Clint Adams <schizo@debian.org>,
+-based on the output of "chktex --help" and deweb(1).
++based on the output of "chktex \-\-help" and deweb(1).
+ .SH "SEE ALSO"
+ .B deweb(1), chktex(1)
+Index: chktex/chktex.1
+===================================================================
+--- chktex.orig/chktex.1	2013-06-03 16:05:03.000000000 +0200
++++ chktex/chktex.1	2013-06-03 16:11:19.000000000 +0200
+@@ -58,10 +58,10 @@
+ .TP
+ .B "-V --pipeverb"
+ How errors are displayed when stdout != tty.
+-Defaults to the same as -v.
++Defaults to the same as \-v.
+ .TP
+ .B "-s --splitchar"
+-String used to split fields when doing -v0
++String used to split fields when doing \-v0
+ .TP
+ .B "-o --output"
+ Redirect error report to a file.
+@@ -138,6 +138,6 @@
+ .I <jensthi@ifi.uio.no>
+ .PP
+ This manual page was cobbled together by Clint Adams <schizo@debian.org>,
+-based on the output of "chktex --help" and deweb(1).
++based on the output of "chktex \-\-help" and deweb(1).
+ .SH "SEE ALSO"
+ .B deweb(1), chkweb(1)
+Index: chktex/configure.in

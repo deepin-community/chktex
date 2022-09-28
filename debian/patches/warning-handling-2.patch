@@ -1,0 +1,64 @@
+From ec0fb9b58f02a62ff0bfec98b997208e9d7a5998 Mon Sep 17 00:00:00 2001
+From: gvol <darthandrus@gmail.com>
+Date: Thu, 15 Feb 2018 03:40:09 +0000
+Subject: Make exit status 2 or 3 (not 1) when warnings or errors are found
+
+This was causing problems with callers that expected a return value of
+1 to mean an internal error.
+
+#53129
+
+
+git-svn-id: svn://svn.savannah.nongnu.org/chktex/trunk@319 29f9d7e1-bebc-0310-b7c6-d7abf8ca9c08
+---
+ chktex/FindErrs.c | 6 ++++--
+ chktex/OpSys.h    | 5 ++++-
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+Index: chktex-1.7.6/FindErrs.c
+===================================================================
+--- chktex-1.7.6.orig/FindErrs.c
++++ chktex-1.7.6/FindErrs.c
+@@ -1884,15 +1884,17 @@ PrintError(const char *File, const char
+                 RGTCTXT(ctInHead, InHeader);
+                 RGTCTXT(ctOutHead, !InHeader);
+ 
++                /* Count how warnings or errors we've found, and
++                 * update the return code with the worst. */
+                 switch (LaTeXMsgs[Error].Type)
+                 {
+                 case etWarn:
+                     WarnPrint++;
+-                    FoundErr = EXIT_FAILURE;
++                    FoundErr = max(FoundErr, EXIT_WARNINGS);
+                     break;
+                 case etErr:
+                     ErrPrint++;
+-                    FoundErr = EXIT_FAILURE;
++                    FoundErr = max(FoundErr, EXIT_ERRORS);
+                     break;
+                 case etMsg:
+                     break;
+Index: chktex-1.7.6/OpSys.h
+===================================================================
+--- chktex-1.7.6.orig/OpSys.h
++++ chktex-1.7.6/OpSys.h
+@@ -83,6 +83,9 @@
+ #  define  EXIT_SUCCESS    0
+ #endif
+ 
++#define EXIT_WARNINGS 2
++#define EXIT_ERRORS 3
++
+ /*  -=><=- -=><=- -=><=- -=><=- -=><=- -=><=- -=><=- -=><=- -=><=-  */
+ 
+ /*
+@@ -189,7 +192,7 @@
+ struct WordList;
+ #endif
+ /* Sorry; there are now cyclic dependencies in the
+-* source tree. :-/ 
++* source tree. :-/
+ */
+ 
+ extern const char *ReverseOn;
